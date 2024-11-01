@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from bot_repo import BotRepo
+from bot_controller import BotController
 from menu_repo import Menu
 from menu_controller import MenuController
 from datetime import datetime
@@ -16,6 +16,6 @@ menu_controller = MenuController(infos)
 load_dotenv()
 BOT_TOKEN = os.getenv('TELEGRAM_API')
 
-bot_repo = BotRepo(BOT_TOKEN, menu_controller)
+bot_repo = BotController(BOT_TOKEN, menu_controller)
 bot_repo.register_handlers()
 bot_repo.run()
