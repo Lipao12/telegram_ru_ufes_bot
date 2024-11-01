@@ -6,47 +6,42 @@ class Menu:
         self.base_url = BASE_URL
 
     def get_day_menu(self, day):
-        fp = urllib.request.urlopen(self.base_url+day)
-        mybytes = fp.read()
-        mystr = mybytes.decode("utf8")
+        fp = urllib.request.urlopen(self.base_url + day)
+        mystr = fp.read().decode("utf8")
         fp.close()
 
         soup = BeautifulSoup(mystr, 'html.parser')
+        menus = {}
+        meal_sections = soup.find_all('div', class_='views-field')
 
-        div_content = soup.find('div', class_='field-content')
-        p_elements_string = []
-        strong_elements_string = []
+        for i in range(0, len(meal_sections) - 1, 2):
+            title_div = meal_sections[i].find('span', class_='field-content')
+            body_div = meal_sections[i + 1].find('div', class_='field-content')
 
-        if div_content:
-            #print(div_content.prettify())
-            p_elements = div_content.find_all('p')
-            for p in p_elements:
-                p_elements_string.append(p.text)
+            if title_div and body_div:
+                refeicao_nome = title_div.text.split(" - ")[0].strip()
+                p_elements = [p.text for p in body_div.find_all('p')]
+                strong_elements = [strong.text for strong in body_div.find_all('strong')]
+                strong_elements.append("end")
 
-            strong_elements = div_content.find_all('strong')
-            for strong in strong_elements:
-                strong_elements_string.append(strong.text)
+                excess_items = [
+                    '\xa0', '* Cardápio sujeito a alterações.',
+                    '** Informamos que todas as nossas preparações podem conter traços de glúten e leite (contaminação cruzada).'
+                ]
 
-        else:
-            print("Elemento não encontrado")
+                j = 1
+                meal = {}
+                for k in range(len(strong_elements) - 1):
+                    current_category = strong_elements[k]
+                    next_category = strong_elements[k + 1]
+                    meal[current_category] = []
 
-        strong_elements_string.append("end")
+                    while j < len(p_elements) and p_elements[j] != next_category:
+                        if p_elements[j] not in excess_items:
+                            meal[current_category].append(p_elements[j])
+                        j += 1
+                    j += 1
 
-        excess_items = ['\xa0', '* Cardápio sujeito a alterações.', '** Informamos que todas as nossas preparações podem conter traços de glúten e leite (contaminação cruzada).']
+                menus[refeicao_nome] = meal
 
-        j = 1
-        meal = {}
-        for i in range(len(strong_elements_string) - 1):
-            current_category = strong_elements_string[i]
-            next_category = strong_elements_string[i + 1]
-            meal[current_category] = []
-
-            while j < len(p_elements_string) and p_elements_string[j] != next_category:
-                if p_elements_string[j] not in excess_items:
-                    meal[current_category].append(p_elements_string[j])
-                j += 1
-            j += 1
-
-        extra_items = [item for item in p_elements_string if item in excess_items]
-
-        return {"meal":meal, "extra": extra_items}
+        return menus
