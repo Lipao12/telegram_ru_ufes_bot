@@ -60,5 +60,5 @@ class BotController:
             self.bot.reply_to(message, tomorrow_menu+ "\n\n" +encouragement_message, parse_mode="Markdown")
 
     def run(self):
-        print("Bot runnin...")
+        print("Bot running...")
         self.bot.infinity_polling()
