@@ -1,6 +1,4 @@
 from datetime import datetime, timedelta
-import locale
-locale.setlocale(locale.LC_TIME, 'Portuguese_Brazil.1252')
 
 class MenuController:
     def __init__(self, menu_repo) -> None:
@@ -22,7 +20,7 @@ class MenuController:
         try:
             info = self.menu_repo.get_day_menu(day)
             if not info:  
-                return f'Não há Cardápio para o dia *{tomorrow.strftime("%d/%m/%Y - %A")}*.'
+                return f'Não há Cardápio para o dia *{tomorrow.strftime("%d/%m/%Y")}*.'
             return self.show_menu(info)
         except Exception as e:
             return f'Ocorreu um erro ao obter o cardápio de amanhã: {e}'

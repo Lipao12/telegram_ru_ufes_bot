@@ -1,7 +1,5 @@
 import telebot
 from datetime import datetime
-import locale
-locale.setlocale(locale.LC_TIME, 'Portuguese_Brazil.1252')
 
 class BotController:
     def __init__(self, api, bot_repo) -> None:
@@ -23,7 +21,7 @@ class BotController:
     def register_handlers(self):
         @self.bot.message_handler(commands=['almoco'])
         def send_lunch_menu(message):
-            day = f'_{datetime.today().strftime("%d/%m/%Y - %A")}_\n'
+            day = f'_{datetime.today().strftime("%d/%m/%Y")}_\n'
             almoco_menu = day + "\n" + self.bot_repo.get_today_lunch()
             encouragement_message = (
                                     "\n🌟 Espero que aproveite sua refeição! Se precisar de mais informações, "
@@ -36,7 +34,7 @@ class BotController:
 
         @self.bot.message_handler(commands=['jantar'])
         def send_dinner_menu(message):
-            day = f'_{datetime.today().strftime("%d/%m/%Y - %A")}_\n'
+            day = f'_{datetime.today().strftime("%d/%m/%Y")}_\n'
             jantar_menu = day + "\n" + self.bot_repo.get_today_dinner()
             encouragement_message = (
                                     "\n🌟 Espero que aproveite sua refeição! Se precisar de mais informações, "
