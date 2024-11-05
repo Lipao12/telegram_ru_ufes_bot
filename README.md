@@ -1,5 +1,7 @@
 # Bot do Cardápio do RU Goiabeiras
 
+t.me/cardapio_ru_ufes_bot
+
 Um bot de Telegram que fornece informações sobre o cardápio do Restaurante Universitário (RU) de Goiabeiras. Este bot permite que os usuários consultem o cardápio de almoço e jantar, garantindo que todos tenham acesso às opções disponíveis.
 
 ## Funcionalidades
