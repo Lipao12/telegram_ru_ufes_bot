@@ -1,0 +1,10 @@
+version: '1'
+
+services:
+  bot:
+    build: .
+    container_name: my_telegram_bot
+    env_file: .env
+    ports:
+      - "5000:5000"
+    restart: unless-stopped

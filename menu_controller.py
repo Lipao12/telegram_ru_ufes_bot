@@ -9,7 +9,7 @@ class MenuController:
         try:
             info = self.menu_repo.get_day_menu(day)
             if not info:  
-                return 'Não há Cardápio para hoje.'
+                return 'Não há Cardápio para hoje.\n'
             return self.show_menu(info, meal_type)
         except Exception as e:
             return f'Ocorreu um erro ao obter o cardápio de hoje: {e}'
