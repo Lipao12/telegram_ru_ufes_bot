@@ -6,7 +6,7 @@ Um bot de Telegram que fornece informações sobre o cardápio do Restaurante Un
 
 ## Demonstração em Vídeo
 
-[Assista à demonstração do bot](https://drive.google.com/file/d/1KpEN4jKDYO8t7fvqCJyvYvl0Dpt3E_Nw/view?usp=sharing)
+[Demonstração do Bot](https://drive.google.com/file/d/1Et8TuyoUNCCorMII8Ivh4uYDOjmX-Hvh/view?usp=sharing)
 
 ## Funcionalidades
 
