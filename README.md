@@ -6,7 +6,7 @@ Um bot de Telegram que fornece informações sobre o cardápio do Restaurante Un
 
 ## Demonstração em Vídeo
 
-[Demonstração do Bot](https://drive.google.com/file/d/1Et8TuyoUNCCorMII8Ivh4uYDOjmX-Hvh/view?usp=sharing)
+![Demonstração do Bot](./readme/Screen_Recording_20241106-104338_Telegram.gif)
 
 ## Funcionalidades
 
@@ -14,6 +14,7 @@ Um bot de Telegram que fornece informações sobre o cardápio do Restaurante Un
 - **Interface Interativa:** Interaja facilmente com o bot através de comandos simples.
 
 ## Comandos
- - /almoco: Mostra o cardápio de almoço do dia atual.
- - /jantar: Mostra o cardápio de jantar do dia atual.
- - /amanha: Mostra o cardápio de almoço e jantar do dia de amanhã.
+
+- /almoco: Mostra o cardápio de almoço do dia atual.
+- /jantar: Mostra o cardápio de jantar do dia atual.
+- /amanha: Mostra o cardápio de almoço e jantar do dia de amanhã.
