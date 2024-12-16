@@ -14,7 +14,7 @@ BASE_URL = "https://ru.ufes.br/cardapio"
 
 load_dotenv()
 BOT_TOKEN = os.getenv('TELEGRAM_API')
-
+print(f"BOT_TOKEN: '{BOT_TOKEN}'")
 menu = Menu(BASE_URL)
 menu_controller = MenuController(menu)
 bot_repo = BotRepo(menu_controller)
